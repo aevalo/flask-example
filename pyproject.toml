@@ -1,0 +1,29 @@
+[project]
+name = "flask-example"
+version = "0.0.1"
+dependencies = [
+    "flask",
+    "python-dotenv"
+]
+requires-python = ">= 3.9"
+authors = [
+    {name = "Arttu Valo", email = "arttu.valo@gmail.com"}
+]
+maintainers = [
+    {name = "Arttu Valo", email = "arttu.valo@gmail.com"}
+]
+description = "Flask things"
+readme = "README.md"
+license-files = [
+    "LICENSE"
+]
+
+[project.scripts]
+spam-cli = "spam:main_cli"
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "pip-tools",
+    "invoke"
+]
