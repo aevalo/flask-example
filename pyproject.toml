@@ -3,6 +3,7 @@ name = "flask-example"
 version = "0.0.1"
 dependencies = [
     "flask",
+    "Flask-SQLAlchemy",
     "python-dotenv"
 ]
 requires-python = ">= 3.9"

@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, request
+from flask import Flask, render_template, request
 from markupsafe import escape
 
 def create_app(test_config=None):
@@ -21,14 +21,19 @@ def create_app(test_config=None):
     # ensure the instance folder exists
     os.makedirs(app.instance_path, exist_ok=True)
 
-    # a simple page that says hello
-    @app.route("/")
-    def hello_world():
-        return "<p>Hello, World!</p>"
-
     @app.route("/hello")
     def hello():
         name = request.args.get("name", "World")
-        return f"Hello, {escape(name)}!"
+        return render_template('hello.html', person=escape(name) if name is not None else None)
+
+    from . import db
+    db.init_app(app)
+
+    from . import auth
+    app.register_blueprint(auth.bp)
+
+    from . import blog
+    app.register_blueprint(blog.bp)
+    app.add_url_rule('/', endpoint='index')
 
     return app

@@ -23,14 +23,19 @@ Install development requirements. This also includes production requirements, so
 uv pip install -r requirements.dev.txt
 ```
 
+Initialize the database
+```shell
+flask --app flaskr init-db
+```
+
 ## Running the Flask app
 
 Run the following command:
 ```shell
-flask --app hello run
+flask --app flaskr run
 ```
 
 Run the following command to use debug mode:
 ```shell
-flask --app hello run --debug
+flask --app flaskr run --debug
 ```
